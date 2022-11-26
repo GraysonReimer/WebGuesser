@@ -1,0 +1,9 @@
+<div class="player-tag">
+    <img id="player-icon" [src]="'assets/images/player-icons/' + playerTag.icon + '.jpg'" />
+    <i class="bi bi-shield-fill" *ngIf="playerTag.isHost"></i>
+    <div>
+        <h5>{{playerTag.username}}</h5>
+        <h5 class="player-tag-points">Points: {{playerTag.points}}</h5>
+    </div>
+    <ng-content></ng-content>
+</div>

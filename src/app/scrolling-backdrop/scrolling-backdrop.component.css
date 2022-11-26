@@ -1,0 +1,8 @@
+#scrolling-backdrop {
+    background-image: url("/assets/images/backdrop.jpg");
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    z-index: -9000;
+}

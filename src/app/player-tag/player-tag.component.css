@@ -1,0 +1,26 @@
+.player-tag {
+    padding: 2px 0px 0.1px 10px;
+    color: black;
+    font-weight: 500;
+    background: linear-gradient(#8cecff, #43e0ff);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.bi-shield-fill {
+    margin-top: 1px;
+    margin-right: 5px;
+}
+
+.player-tag-points {
+    color: purple;
+}
+
+#player-icon {
+    width: auto;
+    height: 50px;
+    border-radius: 50px;
+    margin: 5px 15px 5px 0px;
+}

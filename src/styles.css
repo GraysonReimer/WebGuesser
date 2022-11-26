@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+body {
+    background: linear-gradient(#8CECFF, #00d0ff) fixed;
+    color: #FFFFFF;
+}
+
+.players-list {
+    min-height: 30%;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.main-title {
+    font-weight: bolder;
+    font-size: 50pt;
+    text-shadow: white 0px 0px 20px;
+}

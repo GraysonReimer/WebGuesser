@@ -1,0 +1,29 @@
+<count-down></count-down>
+
+<scrolling-backdrop></scrolling-backdrop>
+
+<div class="main-title">WebGuesser</div>
+
+<h3 id="round-info" *ngIf="gameService.gameInfo !== undefined">Round {{gameService.gameInfo.roundIndex}} of {{gameService.gameInfo.totalRounds}}</h3>
+<div class="players-list">
+    <app-player-tag *ngFor="let player of gameService.players | async" [playerTag]="player">
+    </app-player-tag>
+</div>
+
+<div id="game-content">
+    <progress id="time-left-progress" *ngIf="this.gameService.canSubmitAnswer" [value]="this.timeBarMs" max="10000"></progress>
+    <img id="display-img" [src]="this.gameService.imageSource" />
+    <div id="option-section">
+        <round-option 
+        *ngFor="let option of gameService.roundOptions" 
+        [optionValues]="option" 
+        [clickEvent]="gameService.sendAnswer"
+        [state]="getButtonState(option)"
+        ></round-option>
+    </div>
+</div>
+
+<div class="center">
+    <button id="next-round-btn" (click)="this.gameService.startNewRound()" *ngIf="this.gameService.canStartNewRound && this.gameService.clientPlayer.isHost">Next Round</button>
+    <loading-icon [messages]="this.gameService.serverDelays"></loading-icon>
+</div>

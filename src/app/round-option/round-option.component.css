@@ -1,0 +1,46 @@
+.option-button {
+    border-radius: 10px;
+    display:inline-block;
+    height: 80%;
+    margin: 10px 10px 10px 10px;
+    transition-duration: 200ms;
+    user-select: none;
+    padding: 1vw;
+    pointer-events: all;
+    color: black;
+}
+
+.option-button-default {
+    background-color: #8CECFF;
+    cursor: pointer;
+}
+
+
+.option-button-disabled {
+    background-color: #4751a8;
+}
+
+.option-button-correct {
+    background-color: #00ff4c;
+    box-shadow: #00ff4c 0px 0px 20px 5px;
+    margin-top: 0px;
+}
+
+.option-button-incorrect {
+    background-color: #ff0015;
+    box-shadow: #ff0015 0px 0px 20px 5px;
+}
+
+.option-button-default:hover {
+    transition-duration: 200ms;
+    background-color: #c3f5ff;
+    box-shadow: white 0px 0px 20px 5px;
+    margin-top: 5px;
+}
+
+h4 {
+    font-size: 1.3vw;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}

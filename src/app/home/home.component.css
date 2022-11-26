@@ -1,0 +1,179 @@
+
+#content-wrapper {
+    width: 90vw;
+    height: 65vh;
+    background-color: #2541B2;
+    border-radius: 20px;
+    margin: 80px auto;
+    box-shadow: #0099bb 0px 0px 50px;
+    padding: 15px;
+    position: relative;
+    flex-flow: column wrap;
+    overflow: hidden;
+}
+
+#start-btn {
+    font-weight: bold;
+    width: 200px;
+    height: 50px;
+    background-color: #00156b;
+    color: inherit;
+    border: none;
+    border-radius: 7px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#start-btn:disabled {
+    background-color: #000e46 !important;
+
+}
+
+.main-title {
+    margin: 2vh auto;
+    text-align: center;
+}
+
+#start-btn:hover{
+    background-color: #000e46;
+}
+
+#username-field {
+    width: 90%;
+    font-weight: 700;
+}
+
+#join-field {
+    width: 120px;
+    font-weight: 700;
+}
+
+#personal-options-form {
+    align-items: center;
+}
+
+#invite-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+}
+
+#invite-icon {
+    font-size: 30px;
+    transition: 200ms;
+    text-align: right !important;
+}
+
+#invite-wrapper:hover > #invite-icon {
+    color: #8CECFF;
+}
+
+#invite-link {
+    opacity: 0;
+    transition: 200ms;
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+#invite-wrapper:hover > #invite-link {
+    opacity: 100;
+}
+
+#join-section {
+    border-radius: 15px;
+    background-color: #000e46;
+    padding: 10px;
+    display: inline-block;
+    width: 45%;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+#section-wrapper {
+    overflow: hidden;
+}
+
+.players-list {
+    bottom: 10;
+    width: 50%;
+    background-color: #000e46;
+}
+
+#join-btn {
+    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    background-color: #0dcaf0;
+    border: none;
+    border-radius: 7px;
+    animation-duration: 30ms;
+}
+
+#join-btn:hover {
+    background-color: #009fbe;
+}
+
+#error-msg {
+    color: red;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#key-words {
+    margin: 4vh 10px 5px 0px;
+    border-radius: 15px;
+    background-color: #000e46;
+    width: 60vw;
+    padding: 10px;
+}
+
+#key-words-input {
+    border-radius: 10px;
+    font-weight: bolder;
+    padding: 3px 10px 3px 10px;
+}
+
+.key-word-item {
+    margin: 10px;
+    border-radius: 15px;
+    padding: 5px 0px 2px 15px;
+    transition-duration: 250ms;
+    background-color: #00156b;
+}
+
+.removable-key-word:hover {
+    background-color: #2541B2;
+    color: red;
+}
+
+#key-word-list {
+    overflow-y: scroll;
+    max-height: 15vh
+}
+
+.removable-key-word {
+    cursor: pointer;
+}
+
+#icon-roll-btn {
+    background-color: transparent;
+    border: none;
+    margin-top: 25px;
+    margin-left: -15px;
+}
+
+#icon-roll-btn img {
+    width: 25px;
+    height: 25px;
+}
+
+.align-beside {
+    display: flex;
+    flex-direction: row;
+}

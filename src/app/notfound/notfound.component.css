@@ -1,0 +1,31 @@
+#main-error-text {
+    color: red;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+#home-btn {
+    margin: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: red;
+    padding: 10px;
+    color: whitesmoke;
+    box-shadow: grey 0px 4px 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#home-btn:hover {
+    background-color: #b3000c;
+}
+
+#main-wrapper {
+    text-align: center;
+    margin: auto;
+    padding: 30vh 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(#ffffff, #ffe4e4);
+    background-attachment: fixed;
+}

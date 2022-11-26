@@ -1,0 +1,6 @@
+<div *ngIf="messages.length > 0" id="loading-overlay">
+    <div id="center-content">
+        <div id="loading-orb"></div>
+        <p *ngFor="let message of messages">{{message}}</p>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<scrolling-backdrop></scrolling-backdrop>
+
+<div id="error-msg"></div>
+<div class="main-title">WebGuesser</div>
+
+<div id="content-wrapper">
+    <div id="invite-wrapper" (click)="copyInviteLink()">
+        <h5 id="invite-link">{{lobbyService.lobbyId}}</h5>
+        <i id="invite-icon" class="bi bi-link-45deg"></i>
+    </div>
+
+    <div class="form-inline" id="personal-options-form">
+        <div class="form-group">
+            <div class="align-beside">
+                <div>
+                    <label for="username-field">Username:</label>
+                    <input type="text" maxlength="20" class="form-control" id="username-field" 
+                        [value]="lobbyService.usernameField"
+                        (blur)="lobbyService.changeUsername($event)"
+                        (keydown)="onUsernameInput($event)"
+                    >
+                </div>           
+                <button id="icon-roll-btn" (click)="this.lobbyService.rollNewIcon()"><img src="assets/images/dice.png" /></button>
+            </div>
+        </div>
+        <br />
+        <button id="start-btn" (click)="lobbyService.requestGameStart()">Let's Go!</button>
+    </div>
+
+    <div id="section-wrapper">
+        <h3>Players:</h3>
+        <div class="players-list">
+            <app-player-tag *ngFor="let player of lobbyService.players | async" [playerTag]="player"></app-player-tag>
+        </div>
+        
+        <div id="join-section">
+            <h5>Join another lobby!</h5>
+            <input type="text" maxlength="6" class="form-control" id="join-field" [(ngModel)]="joinGameId" />
+            <br />
+            <button id="join-btn" (click)="joinLobby()">Join Lobby</button>
+        </div>
+    </div>
+    
+    <h5>{{8 - lobbyService.players.value.length}} slots available</h5>
+
+    <div id="key-words">
+        <h5>Key Words:</h5>
+        <input id="key-words-input" type="text" maxlength="20" (keypress)="addKeyWord($event)" *ngIf="lobbyService.clientPlayer.isHost" />
+        <div id="key-word-list">
+            <div class="key-word-item" [class.removable-key-word]="lobbyService.clientPlayer.isHost" *ngFor="let keyWord of lobbyService.keyWords" (click)="removeKeyWord($event)">
+                <h6>{{keyWord}}</h6>
+            </div>
+        </div>
+    </div>
+</div>

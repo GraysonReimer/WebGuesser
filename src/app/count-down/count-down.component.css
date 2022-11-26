@@ -1,0 +1,49 @@
+#count-down-overlay {
+    background-color: rgba(77, 51, 170, 0.3);
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+}
+
+#count-down-text {
+    font-size: 200px;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    position: fixed;
+    color: black;
+    top: 50%;
+    left: 50%;
+
+    -webkit-animation: pulse 1s infinite;
+    -moz-animation:    pulse 1s infinite;
+    -o-animation:      pulse 1s infinite;
+    animation:         pulse 1s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% { font-size: 200px; }
+    15% { font-size: 300px; } 
+    100% { font-size: 200px; } 
+  }
+  
+  @-moz-keyframes pulse {
+    0% { font-size: 200px; }
+    25% { font-size: 300px; } 
+    100% { font-size: 200px; } 
+  }
+  
+  @-o-keyframes pulse {
+    0% { font-size: 200px; }
+    25% { font-size: 300px; } 
+    100% { font-size: 200px; } 
+  }
+  
+  @keyframes pulse { 
+    0% { font-size: 200px; }
+    10% { font-size: 300px; } 
+    20% { font-size: 280px; } 
+    35% { font-size: 300px; }
+    100% { font-size: 200px; } 
+  }
