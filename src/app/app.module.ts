@@ -16,6 +16,7 @@ import { CountDownComponent } from './count-down/count-down.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollingBackdropComponent } from './scrolling-backdrop/scrolling-backdrop.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoadingIconComponent } from './loading-icon/loading-icon.component';
     LobbyService,
     GameService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: 'BASE_URL', useFactory: getBaseUrl }
+    { provide: 'BASE_URL', useFactory: getBaseUrl },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
 })
