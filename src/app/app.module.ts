@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +16,7 @@ import { CountDownComponent } from './count-down/count-down.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollingBackdropComponent } from './scrolling-backdrop/scrolling-backdrop.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,12 +42,15 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     GameService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: 'BASE_URL', useFactory: getBaseUrl },
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: isDevMode()? PathLocationStrategy: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
 
 export function getBaseUrl() {
-  return "https://api.webguesser.com";
+  if (isDevMode())
+    return "https://localhost:44350";
+  else
+    return "https://api.webguesser.com";
 }
