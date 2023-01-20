@@ -5,6 +5,7 @@ import { catchError, Observable, of, BehaviorSubject, map, mergeMap } from 'rxjs
 import * as signalR from "@microsoft/signalr"
 import { Player } from './lobby.service';
 import { RoundOption } from '../round-option/round-option.component';
+import { LobbyErrorCode } from '../error-handling/lobby-errors';
 
 @Injectable({
   providedIn: 'root'
@@ -162,6 +163,14 @@ export class GameService {
     this.hubConnection.on("ImageUnaltered", () => {
       this.getRoundImageUnaltered();
     });
+
+    this.hubConnection.on("HostQuit", () => {
+      this.exitToLobby(LobbyErrorCode.HostQuit);
+    });
+
+    this.hubConnection.on("RemoveUser", (userId: number) => {
+      this.removePlayer(userId);
+    });
   }
 
   private loadNextImageAlteration() {
@@ -244,9 +253,11 @@ export class GameService {
     }
   }
 
-  private exitToLobby()
+  private exitToLobby(errorCode: LobbyErrorCode | null = null)
   {
-    this.router.navigate(['/lobby']);
+      this.router.navigate(['/lobby'], { queryParams: errorCode !== null ? { red: Number(errorCode) } : {} }).then(() => {
+        window.location.reload();
+      });
   }
 
   private loadGameInfoLocally() {
@@ -262,6 +273,19 @@ export class GameService {
 
     if (this.clientPlayer === null)
       this.exitToLobby();
+  }
+
+  private removePlayer(playerId: number)
+  {
+    const currentPlayers = this.players.value;
+
+    var indexOfPlayer = currentPlayers.findIndex(x => x.playerId == playerId);
+    if (indexOfPlayer === -1)
+      return;
+
+    currentPlayers.splice(indexOfPlayer, 1);
+
+    this.players.next(currentPlayers);
   }
 
   public joinGame()

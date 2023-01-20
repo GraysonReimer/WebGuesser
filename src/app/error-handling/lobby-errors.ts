@@ -1,4 +1,4 @@
-export enum LobbyErrorCode { NotFound, LobbyFull, Banned }
+export enum LobbyErrorCode { NotFound, LobbyFull, Banned, HostQuit }
 export class LobbyErrors {
     public static ErrorMessage(code: LobbyErrorCode): string {
         switch (code) {
@@ -8,6 +8,8 @@ export class LobbyErrors {
                 return "The requested lobby is full.";
             case LobbyErrorCode.Banned:
                 return "You are not permitted to join this lobby.";
+            case LobbyErrorCode.HostQuit:
+                return "The host of this lobby has quit.";
         }
     }
 }

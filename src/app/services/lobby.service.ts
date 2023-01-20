@@ -101,6 +101,14 @@ export class LobbyService {
     this.hubConnection.on('removekeyword', keyword => {
       this.removeKeyWord(keyword);
     });
+
+    this.hubConnection.on('HostQuit', () => {
+      this.redirectHomeWithError(LobbyErrorCode.HostQuit);
+    });
+
+    this.hubConnection.on('RemoveUser', (userId: number) => {
+      this.removePlayerData(userId);
+    });
   }
 
   private getPlayerFromList(playerId: number) {
@@ -182,6 +190,20 @@ export class LobbyService {
     const currentPlayers = this.players.value;
     const updatedPlayers = [...currentPlayers, newData];
     this.players.next(updatedPlayers);
+  }
+
+  private removePlayerData(playerId: number)
+  {
+    const currentPlayers = this.players.value;
+
+    var indexOfPlayer = currentPlayers.indexOf(this.getPlayerFromList(playerId));
+
+    if (indexOfPlayer === -1)
+      return;
+
+    currentPlayers.splice(indexOfPlayer, 1);
+
+    this.players.next(currentPlayers);
   }
 
   //Add a list of players to the lobby.. Updates the list for UI.
